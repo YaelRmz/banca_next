@@ -1,0 +1,5 @@
+configurations.maybeCreate("debug")
+artifacts.add("debug", file("../app/libs/debug/protector-oath.aar"))
+
+configurations.maybeCreate("release")
+artifacts.add("release", file("../app/libs/release/protector-oath.aar"))
