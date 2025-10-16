@@ -31,6 +31,7 @@ import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -47,8 +48,8 @@ import com.thalesgroup.BancoNextSample.UiComponents.ResultFragment;
 
 public class MainActivity extends AppCompatActivity {
 
-    //region Defines
-
+    private EditText mEditTextPin;
+    private EditText mEditTextRegistrationCode;
     private Button mButtonEnroll;
     private Button mButtonGenerateOTP;
     private ProgressDialog mProgressDialog = null;
@@ -62,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mEditTextPin = findViewById(R.id.activity_main_et_pin);
+        mEditTextRegistrationCode = findViewById(R.id.activity_main_et_reg_code);
         mButtonEnroll = findViewById(R.id.activity_main_button_enroll);
         mButtonGenerateOTP = findViewById(R.id.activity_main_button_generate_otp);
 
@@ -154,8 +157,8 @@ public class MainActivity extends AppCompatActivity {
 
         // Hardcoded user id for demo purposes only!
         final String userId = "test01";
-        final String registrationCode = "8327269845";
-        final String pin = "9011";
+        final String registrationCode = mEditTextRegistrationCode.getText().toString();
+        final String pin = mEditTextPin.getText().toString();
 
         SecureStorageHelper.writePin(pin);
 
